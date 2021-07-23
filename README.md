@@ -9,5 +9,5 @@ Quiz app related to Avatar the last air bender
 1. Add CLI animation
 
 ### Links
-1. [live demo]()
-2. [mark-three]()
+1. [live demo](https://replit.com/@ajitpsakri/mark-two#index.js?embed=1&output=1)
+2. [mark-three-GitHub repo]()
