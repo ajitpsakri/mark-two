@@ -100,8 +100,10 @@ const game=()=>{
 //main function
 const userName = readlineSync.question(chalk.blueBright("What is your name,end with bending you like? "));
 console.log(' ');
+console.log("Welcome"+userName);
+console.log(' ');
 game();
-console.log(chalk.blueBright(`Score is: ${score}`));
+console.log(chalk.blueBright(`Score is: ${score}/7`));
 
 if(score===0){
   console.log(chalk.blueBright("You don't know anything about Avatar  :("))
