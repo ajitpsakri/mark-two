@@ -113,3 +113,5 @@ else if(score > 2 && score < 5){
 }else if(score === 7){
     console.log(chalk.blueBright("Your OG fan of Avatar (ﾉﾟ0ﾟ)ﾉ~"))
 }
+
+console.log("Hey")
