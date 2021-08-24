@@ -98,9 +98,9 @@ const game=()=>{
   }
 }
 //main function
-const userName = readlineSync.question(chalk.blueBright("What is your name,end with bending you like? "));
+const userName = readlineSync.question(chalk.blueBright("What is your name? "));
 console.log(' ');
-console.log("Welcome"+userName);
+console.log("Welcome "+chalk.bold(userName)+" to Avatar Academy, Answer the quiz and make high score to compete with you friends!");
 console.log(' ');
 game();
 console.log(chalk.blueBright(`Score is: ${score}/7`));
