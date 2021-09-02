@@ -1,7 +1,7 @@
 //imports
 let readlineSync = require('readline-sync');
 let chalk = require('chalk');
-
+const fs = require('fs')
 //data
 let score = 0;
 const highScoreDB = []
@@ -98,6 +98,50 @@ const game = () => {
 		}
 	}
 }
+const updateAndShowHighScore = (score, userName) => {
+	//read
+	const data = JSON.parse(fs.readFileSync('data.json'));
+	//update
+	data.push({
+		name: userName,
+		score: score,
+	})
+	let dataString = JSON.stringify(data, null, 2);
+	fs.writeFileSync('data.json', dataString);
+	//display
+	let tempHighScoreData = [...data]
+	let maxElementIndex = 0;
+	if (tempHighScoreData.length < 5) {
+		for (let i = 0; i < data.length; i++) {
+			let max = tempHighScoreData[0].score;
+			for (let j = 0; j < tempHighScoreData.length; j++) {
+				if (tempHighScoreData[j].score > max) {
+					max = tempHighScoreData[j].score;
+					maxElementIndex = j
+				} else {
+					max = max;
+				}
+			}
+
+			console.log(chalk.yellow(`High Score Rank ${i + 1}: ${tempHighScoreData[maxElementIndex].name} with score ${tempHighScoreData[maxElementIndex].score}`))
+			tempHighScoreData.splice(maxElementIndex, 1)
+		}
+	} else {
+		for (let i = 0; i < 5; i++) {
+			let max = tempHighScoreData[0].score;
+			for (let j = 0; j < tempHighScoreData.length; j++) {
+				if (tempHighScoreData[j].score > max) {
+					max = tempHighScoreData[j].score;
+					maxElementIndex = j
+				} else {
+					max = max;
+				}
+			}
+			console.log(chalk.yellow(`High Score Rank ${i + 1}: ${tempHighScoreData[maxElementIndex].name} with score ${tempHighScoreData[maxElementIndex].score}`))
+				tempHighScoreData.splice(maxElementIndex, 1)
+		}
+	}
+}
 //main function
 const userName = readlineSync.question(chalk.blueBright("What is your name? "));
 console.log(' ');
@@ -115,3 +159,4 @@ if (score === 0) {
 		console.log(chalk.blueBright("Your OG fan of Avatar (ﾉﾟ0ﾟ)ﾉ~"))
 	}
 }
+	updateAndShowHighScore(score, userName);
